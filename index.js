@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { Parser } from 'parse5';
 
@@ -26,17 +26,19 @@ class HtmlText extends Component {
     }
 
     render() {
+        const Container = this.props.container;
         const children = this.state.fragment.childNodes.map((node, index) => processNode(node, `${this.rootKey}_${index}`, this.props.textStyle));
 
         return (
-            <View style={[styles.container, this.props.containerStyle]}>
+            <Container style={[styles.container, this.props.containerStyle]}>
                 {children}
-            </View>
+            </Container>
         );
     }
 }
 
 HtmlText.propTypes = {
+    container: React.PropTypes.func.isRequired,
     html: React.PropTypes.string.isRequired,
     containerStyle: React.PropTypes.oneOfType([
         React.PropTypes.object,
@@ -48,6 +50,10 @@ HtmlText.propTypes = {
         React.PropTypes.array,
         React.PropTypes.number,
     ])
+};
+
+HtmlText.defaultProps = {
+    container: Text
 };
 
 export default HtmlText;
