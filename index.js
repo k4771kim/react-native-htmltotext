@@ -37,7 +37,7 @@ class HtmlText extends Component {
 }
 
 HtmlText.propTypes = {
-    html: React.PropTypes.string,
+    html: React.PropTypes.string.isRequired,
     style: View.propTypes.style
 };
 
