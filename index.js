@@ -26,10 +26,10 @@ class HtmlText extends Component {
     }
 
     render() {
-        const children = this.state.fragment.childNodes.map((node, index) => processNode(node, `${this.rootKey}_${index}`));
+        const children = this.state.fragment.childNodes.map((node, index) => processNode(node, `${this.rootKey}_${index}`, this.props.textStyle));
 
         return (
-            <View style={[styles.container, this.props.style]}>
+            <View style={[styles.container, this.props.containerStyle]}>
                 {children}
             </View>
         );
@@ -38,7 +38,16 @@ class HtmlText extends Component {
 
 HtmlText.propTypes = {
     html: React.PropTypes.string.isRequired,
-    style: View.propTypes.style
+    containerStyle: React.PropTypes.oneOfType([
+        React.PropTypes.object,
+        React.PropTypes.array,
+        React.PropTypes.number,
+    ]),
+    textStyle: React.PropTypes.oneOfType([
+        React.PropTypes.object,
+        React.PropTypes.array,
+        React.PropTypes.number,
+    ])
 };
 
 export default HtmlText;
