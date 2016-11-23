@@ -30,7 +30,7 @@ class HtmlText extends Component {
         const children = this.state.fragment.childNodes.map((node, index) => processNode(node, `${this.rootKey}_${index}`, this.props.textStyle));
 
         return (
-            <Container style={[styles.container, this.props.containerStyle]}>
+            <Container style={this.props.containerStyle}>
                 {children}
             </Container>
         );
