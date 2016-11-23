@@ -22,27 +22,27 @@ function isInlineElement(node) {
     return node && INLINE_ELEMENTS.includes(node.nodeName);
 }
 
-function processTextNode(node, parentKey) {
+function processTextNode(node, parentKey, style) {
     const key = `${parentKey}_text`;
-    return <Text key={key}>{node.value}</Text>;
+    return <Text key={key} style={style}>{node.value}</Text>;
 }
 
-function processInlineNode(node, parentKey) {
+function processInlineNode(node, parentKey, style) {
     const key = `${parentKey}_${node.nodeName}`;
     const children = node.childNodes
         .filter((node) => isInlineElement(node) || isText(node))
-        .map((node, index) => processNode(node, `${key}_${index}`));
+        .map((node, index) => processNode(node, `${key}_${index}`, style));
 
-    return <Text key={key} style={styleForTag(node.nodeName)}>{children}</Text>;
+    return <Text key={key} style={[styleForTag(node.nodeName), style]}>{children}</Text>;
 }
 
-function processBlockNode(node, parentKey) {
+function processBlockNode(node, parentKey, style) {
     const key = `${parentKey}_${node.nodeName}`;
     const children = [];
     let lastInlineNodes = [];
 
     node.childNodes.forEach((childNode, index) => {
-        const child = processNode(childNode, `${key}_${index}`);
+        const child = processNode(childNode, `${key}_${index}`, style);
 
         if (isInlineElement(childNode) || isText(childNode)) {
             lastInlineNodes.push(child);
@@ -63,17 +63,17 @@ function processBlockNode(node, parentKey) {
     return <View key={key} style={styleForTag(node.nodeName)}>{children}</View>;
 }
 
-function processNode(node, parentKey) {
+function processNode(node, parentKey, style) {
     if (isText(node)) {
-        return processTextNode(node, parentKey);
+        return processTextNode(node, parentKey, style);
     }
 
     if (isInlineElement(node)) {
-        return processInlineNode(node, parentKey);
+        return processInlineNode(node, parentKey, style);
     }
 
     if (isBlockElement(node)) {
-        return processBlockNode(node, parentKey);
+        return processBlockNode(node, parentKey, style);
     }
 
     return null;
