@@ -60,7 +60,7 @@ function processBlockNode(node, parentKey, style) {
         children.push(lastInlineNodes);
     }
 
-    return <View key={key} style={styleForTag(node.nodeName)}>{children}</View>;
+    return <Text key={key} style={[styleForTag(node.nodeName), style]}>{children}</Text>;
 }
 
 function processNode(node, parentKey, style) {
