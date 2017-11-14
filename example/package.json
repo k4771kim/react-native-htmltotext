@@ -1,0 +1,14 @@
+{
+	"name": "HtmlTextExample",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start"
+	},
+	"dependencies": {
+		"parse5": "1.5.1",
+		"prop-types": "15.6.0",
+		"react": "16.0.0-alpha.6",
+		"react-native": "0.43.3",
+		"react-native-htmltotext": "git+ssh://git@github.com/NikolaBorislavovHristov/react-native-htmltotext.git#v1.0.0"
+	}
+}

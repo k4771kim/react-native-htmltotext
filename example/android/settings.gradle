@@ -1,0 +1,3 @@
+rootProject.name = 'HtmlTextExample'
+
+include ':app'
