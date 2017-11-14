@@ -2385,9 +2385,9 @@ react-devtools-core@^2.0.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-"react-native-htmltotext@git+ssh://git@github.com/NikolaBorislavovHristov/react-native-htmltotext.git#c1ca8e2a4a515eac1ec424c82386f4db5ed2a6d9":
-  version "0.0.2"
-  resolved "git+ssh://git@github.com/NikolaBorislavovHristov/react-native-htmltotext.git#c1ca8e2a4a515eac1ec424c82386f4db5ed2a6d9"
+"react-native-htmltotext@git+ssh://git@github.com/NikolaBorislavovHristov/react-native-htmltotext.git#v1.0.0":
+  version "1.0.0"
+  resolved "git+ssh://git@github.com/NikolaBorislavovHristov/react-native-htmltotext.git#4dfcd5be745ee8b1a711920ce441d980bfc8a921"
   dependencies:
     parse5 "1.5.1"
     prop-types "15.6.0"
