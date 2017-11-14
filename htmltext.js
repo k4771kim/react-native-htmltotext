@@ -56,8 +56,11 @@ class HtmlText extends Component {
         const key = `${parentKey}_${node.nodeName}`;
         const style = this.stylesForNode(node);
         const children = node.childNodes
-            .filter((node) => this.isInlineElement(node) || this.isText(node))
+            .filter((node) => !this.isBlockElement(node))
             .map((node, index) => this.renderNode(node, `${key}_${index}`));
+        if (node.childNodes.length > children.length) {
+            console.warn('Nesting of block element inside inline element is not supported');
+        }
 
         return (
             <Text key={key} style={style}>{children}</Text>
