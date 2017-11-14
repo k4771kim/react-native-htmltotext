@@ -1,6 +1,6 @@
 # react-native-htmltotext
 
-### Render html string using Text and View components
+### Render html string using Text and View components by using [parse5](https://github.com/inikulin/parse5) to parse the html
 #### Nesting of block element inside inline element is not supported
 #### Supported elements are u, b, i and div
 
