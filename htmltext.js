@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
 import { Parser } from 'parse5';
 import styles from './styles';
 import { INLINE_ELEMENTS, BLOCK_ELEMENTS } from './constants';
@@ -17,16 +17,18 @@ class HtmlText extends Component {
         return nextProps.html !== this.props.html ||
             nextProps.blockNodeStyle !== this.props.blockNodeStyle ||
             nextProps.inlineNodeStyle !== this.props.inlineNodeStyle ||
-            nextProps.containerStyle !== this.props.containerStyle;
+            nextProps.textNodeStyle !== this.props.textNodeStyle ||
+            nextProps.containerStyle !== this.props.containerStyle ||
+            nextProps.allowFontScaling !== this.props.allowFontScaling;
     }
 
     stylesForNode(node) {
         if (this.isText(node)) {
-            return this.props.inlineNodeStyle;
+            return this.props.textNodeStyle;
         } else if (this.isInlineElement(node)) {
-            return [this.props.inlineNodeStyle, styles[node.nodeName] || {}];
+            return [this.props.inlineNodeStyle, styles[node.nodeName] || null];
         } else if (this.isBlockElement(node)) {
-            return [this.props.blockNodeStyle, styles[node.nodeName] || {}];
+            return [this.props.blockNodeStyle, styles[node.nodeName] || null];
         }
     }
 
@@ -48,7 +50,7 @@ class HtmlText extends Component {
         const children = node.value;
 
         return (
-            <Text key={key} style={style}>{children}</Text>
+            <Text key={key} style={style} allowFontScaling={this.props.allowFontScaling}>{children}</Text>
         );
     }
 
@@ -63,7 +65,7 @@ class HtmlText extends Component {
         }
 
         return (
-            <Text key={key} style={style}>{children}</Text>
+            <Text key={key} style={style} allowFontScaling={this.props.allowFontScaling}>{children}</Text>
         );
     }
 
@@ -98,13 +100,13 @@ class HtmlText extends Component {
         return children;
     }
 
-    renderNode(node, parentKey, style) {
+    renderNode(node, parentKey) {
         if (this.isText(node)) {
-            return this.renderTextNode(node, parentKey, style);
+            return this.renderTextNode(node, parentKey);
         } else if (this.isInlineElement(node)) {
-            return this.renderInlineNode(node, parentKey, style);
+            return this.renderInlineNode(node, parentKey);
         } else if (this.isBlockElement(node)) {
-            return this.renderBlockNode(node, parentKey, style);
+            return this.renderBlockNode(node, parentKey);
         } else {
             console.warn(`Supported elements are ${INLINE_ELEMENTS} and ${BLOCK_ELEMENTS}`);
             return null;
@@ -123,25 +125,16 @@ class HtmlText extends Component {
             </View>
         );
     }
+
 }
 
 HtmlText.propTypes = {
+    allowFontScaling: PropTypes.bool,
     html: PropTypes.string.isRequired,
-    containerStyle: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.array,
-        PropTypes.number
-    ]),
-    inlineNodeStyle: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.array,
-        PropTypes.number
-    ]),
-    blockNodeStyle: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.array,
-        PropTypes.number
-    ])
+    containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+    textNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+    inlineNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+    blockNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number])
 };
 
 export default HtmlText;
