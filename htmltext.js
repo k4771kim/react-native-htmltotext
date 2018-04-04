@@ -129,12 +129,15 @@ class HtmlText extends Component {
 }
 
 HtmlText.propTypes = {
-    allowFontScaling: PropTypes.bool,
+    allowFontScaling: PropTypes.bool.isRequired,
     html: PropTypes.string.isRequired,
     containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
     textNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
     inlineNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
     blockNodeStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number])
+};
+HtmlText.defaultProps = {
+    allowFontScaling: false
 };
 
 export default HtmlText;
