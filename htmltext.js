@@ -15,10 +15,8 @@ class HtmlText extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.html !== this.props.html ||
-            nextProps.blockNodeStyle !== this.props.blockNodeStyle ||
-            nextProps.inlineNodeStyle !== this.props.inlineNodeStyle ||
-            nextProps.textNodeStyle !== this.props.textNodeStyle ||
             nextProps.containerStyle !== this.props.containerStyle ||
+            nextProps.textStyle !== this.props.textStyle ||
             nextProps.allowFontScaling !== this.props.allowFontScaling;
     }
 
@@ -26,9 +24,9 @@ class HtmlText extends Component {
         if (this.isText(node)) {
             return this.props.textNodeStyle;
         } else if (this.isInlineElement(node)) {
-            return [this.props.inlineNodeStyle, styles[node.nodeName] || null];
+            return styles[node.nodeName];
         } else if (this.isBlockElement(node)) {
-            return [this.props.blockNodeStyle, styles[node.nodeName] || null];
+            return styles[node.nodeName];
         }
     }
 
@@ -80,7 +78,7 @@ class HtmlText extends Component {
             if (this.isBlockElement(childNode)) {
                 if (inlineChildren.length > 0) {
                     children.push(
-                        <View key={`${key}_${index - 1}`} style={style}>{inlineChildren}</View>
+                        <View key={`${key}_${index - 1}`} style={style}><Text style={this.props.textNodeStyle}>{inlineChildren}</Text></View>
                     );
                     inlineChildren = [];
                 }
@@ -93,7 +91,7 @@ class HtmlText extends Component {
 
         if (inlineChildren.length > 0) {
             children.push(
-                <View key={`${key}_${node.childNodes.length - 1}`} style={style}>{inlineChildren}</View>
+                <View key={`${key}_${node.childNodes.length - 1}`} style={style}><Text style={this.props.textNodeStyle}>{inlineChildren}</Text></View>
             );
         }
 
