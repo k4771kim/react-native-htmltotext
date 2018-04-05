@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
     },
     div: {
-        flexDirection: 'row'
+        alignItems: 'flex-start'
     }
 });
 
