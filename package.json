@@ -1,14 +1,47 @@
 {
+  "_from": "react-native-htmltotext",
+  "_id": "react-native-htmltotext@2.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-8N5Eu/zqDlvC0YMqDKZn+FF9F2QFd3hkzNK/5mtdPtkzh4IPfpAfpG87vRv/h6P0xyFDWcDbrRGpt0s/9TyF3w==",
+  "_location": "/react-native-htmltotext",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-htmltotext",
     "name": "react-native-htmltotext",
-    "version": "2.0.1",
-    "main": "index.js",
-    "author": "Nikola Hristov",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/NikolaBorislavovHristov/react-native-htmltotext.git"
-    },
-    "dependencies": {
-        "parse5": "1.5.1"
-    }
+    "escapedName": "react-native-htmltotext",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-htmltotext/-/react-native-htmltotext-2.0.1.tgz",
+  "_shasum": "ce7df6b0ef6b5e92d69b5a8ca7beafe54fb958f0",
+  "_spec": "react-native-htmltotext",
+  "_where": "/Users/kimbogyun/Develop/ReactNative/eliceEditorSample",
+  "author": {
+    "name": "Nikola Hristov"
+  },
+  "bugs": {
+    "url": "https://github.com/NikolaBorislavovHristov/react-native-htmltotext/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "parse5": "1.5.1"
+  },
+  "deprecated": false,
+  "description": "### Render html string using Text and View components by using [parse5](https://github.com/inikulin/parse5) to parse the html #### Nesting of block element inside inline element is not supported #### Supported elements are u, b, i and div",
+  "homepage": "https://github.com/NikolaBorislavovHristov/react-native-htmltotext#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-native-htmltotext",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaBorislavovHristov/react-native-htmltotext.git"
+  },
+  "version": "2.0.1"
 }
