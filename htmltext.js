@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 import { Parser } from 'parse5'
 import styles from './styles'
-import hljsStyles from './a11y-dark.styl'
+import hljsStyles from './elice.styl'
 import { INLINE_ELEMENTS, BLOCK_ELEMENTS } from './constants'
 
 class HtmlText extends Component {
